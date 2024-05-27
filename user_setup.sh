@@ -7,6 +7,18 @@ mkdir -p /media/scratch.metropolis2
 sudo chmod -R 777 /media/scratch.metropolis2
 sudo mount -t cifs -o "vers=2.0,username=achafale,dom=nvidia.com,dir_mode=0777,file_mode=0777,mfsymlinks" //dc2-cdot49-sw-svm02/scratch.metropolis2 /media/scratch.metropolis2
 
+# Setting up ssh-keygen
+ssh-keygen -t ed25519 -C "achafale@nvidia.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# installing miniconda
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+~/miniconda3/bin/conda init bash
+
 # Setup ngc access
 git clone ssh://git@gitlab-master.nvidia.com:12051/tlt/ngc-collaterals.git
 rm -rvf ngc-collaterals
