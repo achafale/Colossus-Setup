@@ -35,5 +35,7 @@ sudo apt-get install -y vim openssh-server default-jre git-all software-properti
 # Install Python
 sudo apt install -y python3-pip python3.8 python3.8-venv python-is-python3
 
+sudo apt install python3.10-venv
+
 echo "THE SYSTEM WILL NOW REBOOT TO FINISH THE SETUP, PLEASE LOG BACK IN TO VERIFY EVERYTHING WORKED"
 sudo reboot
